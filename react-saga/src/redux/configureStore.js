@@ -1,4 +1,5 @@
 import { createStore,compose,applyMiddleware } from 'redux';
+import thunk from 'redux-thunk'
 import rootReducer from './../reducers/index';
 const composeEnhancers = process.env.NODE_ENV !== 'production' &&
 typeof window === 'object' &&
@@ -7,7 +8,7 @@ window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
     shouldHotReload: false
 }) : compose;
 const configureStore = () => {
-    const middlewares = [];
+    const middlewares = [thunk];
     const enhancers = [
         applyMiddleware(...middlewares)
     ]
